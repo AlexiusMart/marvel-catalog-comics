@@ -30,9 +30,9 @@ class MarvelService {
             description: char.description ? `${char.description.slice(0, 100)}...` : 'Описание для данного героя отсутствует',
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+        wiki: char.urls[1].url
         }
     }
 }
 
-export default MarvelService
+export default MarvelService;
