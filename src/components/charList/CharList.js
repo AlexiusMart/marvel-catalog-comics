@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import {Component} from 'react'
 import MarvelService from '../../services/MarvelService'
 import Spinner from '../spinner/Spinner'
 import ErrorMessage from '../errorMessage/ErrorMessage'
@@ -21,7 +21,7 @@ class CharList extends Component {
     this.onRequest()
   }
 
-  onRequest = (offset) => {
+  onRequest = offset => {
     this.onCharListLoading()
     this.marvelService
       .getAllCharacters(offset)
@@ -35,13 +35,13 @@ class CharList extends Component {
     })
   }
 
-  onCharListLoaded = (newCharList) => {
+  onCharListLoaded = newCharList => {
     let ended = false
     if (newCharList.length < 9) {
       ended = true
     }
 
-    this.setState(({ offset, charList }) => ({
+    this.setState(({offset, charList}) => ({
       charList: [...charList, ...newCharList],
       loading: false,
       newItemLoading: false,
@@ -57,21 +57,24 @@ class CharList extends Component {
     })
   }
 
+  onFocus = () => {}
+
   renderItems(arr) {
-    const items = arr.map((item) => {
-      let imgStyle = { objectFit: 'cover' }
+    const items = arr.map(item => {
+      let imgStyle = {objectFit: 'cover'}
       if (
         item.thumbnail ===
         'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
       ) {
-        imgStyle = { objectFit: 'unset' }
+        imgStyle = {objectFit: 'unset'}
       }
 
       return (
         <li
           className='char__item'
           key={item.id}
-          onClick={() => this.props.onCharSelected(item.id)}
+          tabIndex={0}
+          onFocus={() => this.props.onCharSelected(item.id)}
         >
           <img src={item.thumbnail} alt={item.name} style={imgStyle} />
           <div className='char__name'>{item.name}</div>
@@ -83,7 +86,8 @@ class CharList extends Component {
   }
 
   render() {
-    const { charList, loading, error, offset, newItemLoading, charEnded } = this.state
+    const {charList, loading, error, offset, newItemLoading, charEnded} =
+      this.state
 
     const items = this.renderItems(charList)
 
@@ -101,7 +105,7 @@ class CharList extends Component {
         <button
           className='button button__main button__long'
           disabled={newItemLoading}
-          style={{'display': charEnded ? 'none' : 'block'}}
+          style={{display: charEnded ? 'none' : 'block'}}
           onClick={() => this.onRequest(offset)}
         >
           <div className='inner'>load more</div>
