@@ -77,7 +77,7 @@ class CharList extends Component {
           onFocus={() => this.props.onCharSelected(item.id)}
         >
           <img src={item.thumbnail} alt={item.name} style={imgStyle} />
-          <div className='char__name'>{item.name}</div>
+          <div className='char__name'>{item.name}</div> 
         </li>
       )
     })
