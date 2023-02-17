@@ -9,12 +9,12 @@ export const useHttp = () => {
       url,
       method = 'GET',
       body = null,
-      header = {'Content-type': 'application/json'}
+      headers = {'Content-Type': 'application/json'}
     ) => {
       setLoading(true)
 
       try {
-        const response = fetch(url, {method, body, header})
+        const response = await fetch(url, {method, body, headers})
 
         if (!response.ok) {
           throw new Error(`Could not fetch ${url}, status: ${response.status}`)
