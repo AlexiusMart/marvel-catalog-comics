@@ -5,7 +5,7 @@ import CharInfo from '../charInfo/CharInfo'
 
 import decoration from '../../resources/img/vision.png'
 
-export const MainPage = () => {
+const MainPage = () => {
   const [selectedChar, setSelectedChar] = useState(null)
 
   const onCharSelected = id => {
@@ -23,3 +23,5 @@ export const MainPage = () => {
     </>
   )
 }
+
+export default MainPage
