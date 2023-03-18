@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {Helmet} from 'react-helmet'
 import RandomChar from '../randomChar/RandomChar'
 import CharList from '../charList/CharList'
 import CharInfo from '../charInfo/CharInfo'
@@ -14,6 +15,9 @@ const MainPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Все персонажи комиксов Marvel</title>
+      </Helmet>
       <RandomChar />
       <div className='char__content'>
         <CharList onCharSelected={onCharSelected} />
